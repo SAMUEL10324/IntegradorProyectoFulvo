@@ -37,6 +37,21 @@ if (!empty($_FILES['imagen_cancha']['name'])) {
     $ruta_final = null;
 }
 
+// Comprobamos si ya existe una cancha con ese número en el mismo predio
+$verificar_query = "
+    SELECT COUNT(*) AS cantidad
+    FROM Cancha
+    WHERE num_cancha = '$num_cancha' AND Predio_id_predio = '$id_predio'
+";
+$resultado = mysqli_query($conexion, $verificar_query);
+$datos = mysqli_fetch_assoc($resultado);
+
+// Si ya existe una cancha con ese número en el predio, no se permite duplicado
+if ($datos['cantidad'] > 0) {
+    echo "<script>alert('Ya existe una cancha con ese número en el predio seleccionado.'); window.history.back();</script>";
+    exit();
+}
+
 // Insertar cancha
 $query = "INSERT INTO Cancha (
     num_cancha, precio_hora, capacidad, tipo_cancha, disponibilidad, imagen_cancha, Predio_id_predio
