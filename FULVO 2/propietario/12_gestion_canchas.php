@@ -53,7 +53,7 @@ $canchas = mysqli_query($conexion, "
             $contador = 1;
             while ($cancha = mysqli_fetch_assoc($canchas)) { 
         ?>
-            <div class="cancha-card">
+            <div class="predio-card">
                 <h2>Cancha <?= $contador ?> - <?= $cancha['nombre_predio'] ?></h2>
                 <p><strong>Número:</strong> <?= $cancha['num_cancha'] ?></p>
                 <p><strong>Precio por hora:</strong> $<?= $cancha['precio_hora'] ?></p>

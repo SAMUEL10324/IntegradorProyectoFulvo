@@ -1,53 +1,42 @@
 <?php
 session_start();
-include '../login/conexion_be.php';
-
-if (!isset($_SESSION['correo']) || $_SESSION['rol'] != 'propietario') {
-    echo '
-        <script>
-            alert("Acceso denegado. Inicia sesión.");
-            window.location = "../login_registro.php";
-        </script>
-    ';
-    session_destroy();
-    die();
-}
-
-$consult_reserva= "
-    SELECT dr.id_detalle_reserva
-    FROM Cancha c
-    INNER JOIN detalle_reserva dr ON dr.Cancha_id_cancha = c.id_cancha
-    WHERE c.id_cancha = {$_POST['id_cancha']}
-";
-
-$resultado_consult = mysqli_query($conexion, $consult_reserva);
-
-if (mysqli_num_rows(($resultado_consult)) > 0 ) {
-    echo '
-        <script>
-            alert("No se uede eliminar la cancha porque tiene reservas asociadas.");
-            window.locaction = "6_elim_cancha.php";
-        </script>
-    ';
+if (!isset($_SESSION['correo']) || $_SESSION['rol'] !== 'propietario') {
+    header("Location: ../login_registro.php");
     exit();
 }
 
-mysqli_query($conexion, "DELETE FROM Cancha WHERE id_cancha = {$_POST['id_cancha']}");
+include '../login/conexion_be.php';
 
-if (mysqli_affected_rows(($conexion)) >0 ) {
-    echo '
-        <script>
-            alert("Cancha eliminada correctamente.");
-            window.location = "12_gestion_canchas.php";
-        </script>
-    ';
+$id_cancha = $_POST['id_cancha'] ?? null;
+
+if (!$id_cancha) {
+    echo "<script>alert('Falta el ID de la cancha.'); window.history.back();</script>";
+    exit();
+}
+
+// Verificar si la cancha tiene reservas asociadas
+$verificar_reservas = mysqli_query($conexion, "
+    SELECT COUNT(*) AS total 
+    FROM Detalle_Reserva 
+    WHERE Cancha_id_cancha = '$id_cancha'
+");
+
+$datos = mysqli_fetch_assoc($verificar_reservas);
+
+if ($datos['total'] > 0) {
+    echo "<script>alert('No se puede eliminar la cancha porque tiene reservas asociadas.'); window.history.back();</script>";
+    exit();
+}
+
+// Si no hay reservas asociadas, se elimina
+$eliminar = mysqli_query($conexion, "
+    DELETE FROM Cancha WHERE id_cancha = '$id_cancha'
+");
+
+if ($eliminar) {
+    echo "<script>alert('Cancha eliminada correctamente.'); window.location = '12_gestion_canchas.php';</script>";
 } else {
-    echo '
-        <script>
-            alert("Error al eliminar la cancha.");
-            window.location = "6_elim_cancha.php";
-        </script>
-    ';
+    echo "<script>alert('Error al eliminar la cancha.'); window.history.back();</script>";
 }
 
 mysqli_close($conexion);

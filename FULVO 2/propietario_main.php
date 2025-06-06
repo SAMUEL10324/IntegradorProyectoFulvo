@@ -38,7 +38,7 @@ $predios = mysqli_query($conexion, "
 
 // Obtener canchas
 $canchas = mysqli_query($conexion, "
-    SELECT c.num_cancha, c.precio_hora, c.tipo_cancha, c.imagen_cancha
+    SELECT c.num_cancha, c.precio_hora, c.tipo_cancha, c.imagen_cancha, p.nombre AS nombre_predio
     FROM Cancha c
     JOIN Predio p ON c.Predio_id_predio = p.id_predio
     WHERE p.Propietario_id_propietario = $id_propietario
@@ -72,8 +72,13 @@ $reservas = mysqli_query($conexion, "
     JOIN Detalle_Reserva d ON r.id_reserva = d.Reserva_id_reserva
     JOIN Cancha c ON d.Cancha_id_cancha = c.id_cancha
     JOIN Predio p ON c.Predio_id_predio = p.id_predio
-    WHERE p.Propietario_id_propietario = $id_propietario
-    ORDER BY r.fecha DESC, d.hora_inicio ASC
+    WHERE 
+        p.Propietario_id_propietario = $id_propietario AND
+        (
+            r.fecha > CURDATE() OR 
+            (r.fecha = CURDATE() AND d.hora_salida > CURTIME())
+        )
+    ORDER BY r.fecha ASC, d.hora_inicio ASC
     LIMIT 5
 ");
 
@@ -97,7 +102,7 @@ $reservas = mysqli_query($conexion, "
             <a href="propietario/11_gestion_predio.php">Gestion de Predio</a>
             <a href="propietario/12_gestion_canchas.php">Gestion de Canchas</a>
                 <a href="propietario/14_gestion_horarios.php">Gestionar Horarios</a><br><br>
-            <a href="propietario/8_ver_reservas.php">Reservas</a>
+            <a href="propietario/8_gestion_reservas.php">Reservas</a>
         </div>
         <a href="login/cerrar_sesion.php" class="btn_volver">Cerrar Sesión</a>
     </header>
@@ -112,7 +117,9 @@ $reservas = mysqli_query($conexion, "
             <p><strong>Contraseña:</strong> ************</p>
             <p><strong>DNI:</strong> <?= $usuario['dni'] ?></p>
             <p><strong>CUIL:</strong> <?= $datos_prop['cuil'] ?? 'No asignado' ?></p>
-            <a href="propietario/13_gestion_mis_datos.php"><button>Editar</button></a>
+            <a href="propietario/13_gestion_mis_datos.php">
+                <button>Editar</button>
+            </a>
         </section>
 
         <!-- Mi Predio -->
@@ -138,7 +145,9 @@ $reservas = mysqli_query($conexion, "
             else: ?>
                 <p>No hay predios registrados.</p>
             <?php endif; ?>
-            <a href="propietario/11_gestion_predio.php"><button>Administrar</button></a>
+            <a href="propietario/11_gestion_predio.php">
+                <button>Administrar</button>
+            </a>
         </section>
 
         <!-- Canchas -->
@@ -146,9 +155,10 @@ $reservas = mysqli_query($conexion, "
             <h2>Canchas</h2>
             <?php while ($c = mysqli_fetch_assoc($canchas)): ?>
                 <div class="cancha-card">
-                    <img src="<?= $c['imagen_cancha'] ?>" alt="Imagen de cancha">
+                    <img src="propietario/<?= $c['imagen_cancha'] ?>" alt="Imagen de cancha">
                     <p><strong>Cancha N<?= $c['num_cancha'] ?></strong></p>
                     <p><?= $c['tipo_cancha'] ?> - $<?= $c['precio_hora'] ?>/H</p>
+                    <p class="predio_canchas"><strong><?= $c['nombre_predio'] ?></strong></p>
                 </div>
             <?php endwhile; ?>
         </section>
@@ -160,10 +170,10 @@ $reservas = mysqli_query($conexion, "
                 <div class="reserva-item">
                     <p class="reserva-num"><strong>🔢 Nº de Reserva:</strong> <?= $res['num_reserva'] ?></p>
                     <p class="reserva-predio"><strong>🏟️ Predio:</strong> <?= $res['nombre_predio'] ?></p>
-                    <p class="reserva-cancha"><strong>🎯 Cancha:</strong> <?= $res['num_cancha'] ?></p>
-                    <p class="reserva-cliente"><strong>👤 Cliente:</strong> <?= $res['nombre_cliente'] . ' ' . $res['apellido_cliente'] ?></p>
+                    <p class="reserva-cancha"><strong>⚽ Cancha:</strong> <?= $res['num_cancha'] ?></p><br>
+                    <p class="reserva-cliente"><strong>👤 Cliente:</strong> <?= $res['nombre_cliente'] . ' ' . $res['apellido_cliente'] ?></p><br>
                     <p class="reserva-fecha"><strong>📅 Fecha:</strong> <?= $res['fecha'] ?></p>
-                    <p class="reserva-hora"><strong>⏰ Hora:</strong> <?= $res['hora_inicio'] ?> a <?= $res['hora_salida'] ?></p>
+                    <p class="reserva-hora"><strong>⏰ Hora:</strong> <?= $res['hora_inicio'] ?> a <?= $res['hora_salida'] ?></p><br>
                     <p class="reserva-estado"><strong>📌 Estado:</strong> <?= ucfirst($res['estado_reserva']) ?></p>
                     <hr>
                 </div>
