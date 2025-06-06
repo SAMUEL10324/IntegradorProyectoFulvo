@@ -32,7 +32,7 @@ if (isset($_FILES['imagen_cancha']) && $_FILES['imagen_cancha']['error'] === UPL
     WHERE id_cancha = '$id_cancha'";
 }else {
     $update_cancha = "UPDATE Cancha SET 
-    num_cancha= '$num_cancha', precio_hora= '$precio_hora', capacidad= '$capacidad', tipo_cancha= '$tipo_cancha', disponibilidad= '$disponibilidad
+    num_cancha= '$num_cancha', precio_hora= '$precio_hora', capacidad= '$capacidad', tipo_cancha= '$tipo_cancha', disponibilidad= '$disponibilidad'
     WHERE id_cancha = '$id_cancha'";
 }
 
