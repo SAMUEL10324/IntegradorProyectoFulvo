@@ -13,9 +13,9 @@
         die();
     }
 
-    include '../login/conexion_be.php'; // conexión a la BD
+    include '../login/conexion_be.php';
 
-    // 1. DATOS DEL FORMULARIO
+    //DATOS DEL FORMULARIO
     $nombre = $_POST['nombre'];
     $descripcion = $_POST['descripcion'];
     $contacto = $_POST['contacto'];
@@ -28,14 +28,14 @@
     $hora_aper = $_POST['hora_aper'];
     $hora_cierre = $_POST['hora_cierre'];
 
-    // 2. MANEJO DE IMAGEN
+    //IMAGEN
     $foto_predio = $_FILES['foto_predio']['name'];
     $ruta_temporal = $_FILES['foto_predio']['tmp_name'];
     $carpeta_destino = 'imagenes/'; // Asegúrate que exista y tenga permisos
     $nombre_imagen = uniqid() . '_' . $foto_predio;
     $ruta_final = $carpeta_destino . $nombre_imagen;
 
-    // 3. SUBIR IMAGEN
+    //SUBIR IMAGEN
     if(!move_uploaded_file($ruta_temporal, $ruta_final)){
         echo '
             <script>
@@ -46,7 +46,7 @@
         exit();
     }
 
-    // 4. OBTENER ID DEL PROPIETARIO (desde tabla Propietario)
+    //OBTENER ID DEL PROPIETARIO
     $query_propietario = "SELECT id_propietario FROM Propietario WHERE Usuario_id_usuario = '$id_usuario'";
     $result_prop = mysqli_query($conexion, $query_propietario);
     if(mysqli_num_rows($result_prop) == 0){
@@ -61,7 +61,7 @@
     $fila_prop = mysqli_fetch_assoc($result_prop);
     $id_propietario = $fila_prop['id_propietario'];
 
-    // 5. INSERTAR UBICACIÓN
+    //INSERTAR UBICACIÓN
     $query_ubicacion = "INSERT INTO Ubicacion (calle, numero, ciudad, provincia) 
                         VALUES ('$calle', '$numero', '$ciudad', '$provincia')";
 
@@ -75,10 +75,10 @@
         exit();
     }
 
-    // 6. OBTENER ID UBICACIÓN RECIÉN CREADA
-    $id_ubicacion = mysqli_insert_id($conexion); // última ID insertada
+    //OBTENER ID UBICACIÓN RECIÉN CREADA
+    $id_ubicacion = mysqli_insert_id($conexion);
 
-    // 7. INSERTAR PREDIO
+    //INSERTAR PREDIO
     $query_predio = "INSERT INTO Predio 
         (nombre, descripcion, contacto, foto_predio, Ubicacion_id_ubicacion, Propietario_id_propietario)
         VALUES 

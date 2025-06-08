@@ -19,7 +19,7 @@ $numero = $_POST['numero'];
 $ciudad = $_POST['ciudad'];
 $provincia = $_POST['provincia'];
 
-// 1. Actualizar imagen si hay nueva
+//Actualizar imagen si hay nueva
 if ($_FILES['foto_predio_nueva']['name']) {
     $foto_predio = $_FILES['foto_predio_nueva']['name'];
     $ruta_temporal = $_FILES['foto_predio_nueva']['tmp_name'];
@@ -41,7 +41,7 @@ if ($_FILES['foto_predio_nueva']['name']) {
         WHERE id_predio=$id_predio";
 }
 
-// 2. Ejecutar actualizaciones
+//Ejecutar actualizaciones
 $update_ubicacion = "UPDATE Ubicacion SET 
     calle='$calle', numero='$numero', ciudad='$ciudad', provincia='$provincia'
     WHERE id_ubicacion=$id_ubicacion";

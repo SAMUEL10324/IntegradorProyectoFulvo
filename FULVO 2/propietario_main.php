@@ -91,6 +91,7 @@ $reservas = mysqli_query($conexion, "
 <head>
     <meta charset="UTF-8">
     <title>Panel Propietario</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wdth,wght@0,75..100,100..900;1,75..100,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="propietario/estilosPropietario.css">
 </head>
 <body>

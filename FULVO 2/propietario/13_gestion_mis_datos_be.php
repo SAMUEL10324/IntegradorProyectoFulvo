@@ -17,21 +17,21 @@ $dni = trim($_POST['dni']);
 $cuil = trim($_POST['cuil']);
 $contrasena = trim($_POST['contrasena']);
 
-// Verificar correo duplicado (excepto el propio)
+// Verifica el correo duplicado (excepto el propio)
 $ver_correo = mysqli_query($conexion, "SELECT id_usuario FROM Usuario WHERE correo_electronico = '$correo' AND id_usuario != $id_usuario");
 if (mysqli_num_rows($ver_correo) > 0) {
     echo "<script>alert('El correo ya está en uso por otro usuario.'); window.location = '13_gestion_mis_datos.php';</script>";
     exit();
 }
 
-// Verificar DNI duplicado (excepto el propio)
+// Verifica DNI duplicado (excepto el propio)
 $ver_dni = mysqli_query($conexion, "SELECT id_usuario FROM Usuario WHERE dni = '$dni' AND id_usuario != $id_usuario");
 if (mysqli_num_rows($ver_dni) > 0) {
     echo "<script>alert('El DNI ya está en uso por otro usuario.'); window.location = '13_gestion_mis_datos.php';</script>";
     exit();
 }
 
-// Verificar CUIL duplicado (excepto el propio)
+// Verifica el CUIL duplicado (excepto el propio)
 $ver_cuil = mysqli_query($conexion, "
     SELECT id_propietario FROM Propietario 
     WHERE cuil = '$cuil' AND Usuario_id_usuario != $id_usuario

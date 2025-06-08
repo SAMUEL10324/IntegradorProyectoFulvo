@@ -10,7 +10,9 @@
     $contrasena_usuario_login = hash('sha512', $contrasena_usuario_login);
 
     // Validar si el usuario existe
-    $validar_login = mysqli_query($conexion, "SELECT * FROM usuario WHERE correo_electronico='$correo_usuario_login' AND contraseña='$contrasena_usuario_login' AND rol='$rol_usuario_login'");
+    $validar_login = mysqli_query($conexion, "SELECT * FROM usuario 
+                                                WHERE correo_electronico='$correo_usuario_login' 
+                                                AND contraseña='$contrasena_usuario_login' AND rol='$rol_usuario_login'");
 
     if (mysqli_num_rows($validar_login) > 0) {
         $row = mysqli_fetch_array($validar_login);

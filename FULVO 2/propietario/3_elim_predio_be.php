@@ -25,6 +25,11 @@ if (!$id_predio) {
     exit;
 }
 
+// Obtener el ID de ubicación del predio antes de eliminarlo
+$ubicacion_result = mysqli_query($conexion, "SELECT Ubicacion_id_ubicacion FROM predio WHERE id_predio = '$id_predio'");
+$ubicacion_data = mysqli_fetch_assoc($ubicacion_result);
+$id_ubicacion = $ubicacion_data['Ubicacion_id_ubicacion'] ?? null;
+
 // Verificar si alguna cancha asociada tiene reservas
 $consulta_reservas = "
     SELECT dr.id_detalle_reserva
@@ -50,6 +55,11 @@ mysqli_query($conexion, "DELETE FROM cancha WHERE Predio_id_predio = '$id_predio
 
 // Eliminar predio
 $eliminado = mysqli_query($conexion, "DELETE FROM predio WHERE id_predio = '$id_predio'");
+
+// Si se eliminó el predio, eliminar la ubicación asociada
+if ($eliminado && $id_ubicacion) {
+    mysqli_query($conexion, "DELETE FROM ubicacion WHERE id_ubicacion = '$id_ubicacion'");
+}
 
 if ($eliminado) {
     echo '
