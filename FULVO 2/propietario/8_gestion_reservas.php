@@ -18,7 +18,7 @@ date_default_timezone_set('America/Argentina/Buenos_Aires');
 $hoy = date('Y-m-d');
 $hora_actual = date('H:i:s');
 
-// Reservas FUTURAS (incluye hoy pero con hora mayor)
+// Reservas activas (incluye hoy pero con hora mayor)
 $reservas_futuras = mysqli_query($conexion, "
     SELECT r.num_reserva, r.fecha, r.estado_reserva,
            d.hora_inicio, d.hora_salida,
@@ -38,7 +38,7 @@ $reservas_futuras = mysqli_query($conexion, "
     ORDER BY r.fecha ASC, d.hora_inicio ASC
 ");
 
-// Reservas HISTÓRICAS (fecha pasada o hoy pero ya cumplidas)
+// Reservas historicas (fecha pasada o hoy pero ya cumplidas)
 $reservas_historicas = mysqli_query($conexion, "
     SELECT r.num_reserva, r.fecha, r.estado_reserva,
            d.hora_inicio, d.hora_salida,

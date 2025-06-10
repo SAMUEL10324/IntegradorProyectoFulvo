@@ -92,7 +92,7 @@ if (isset($_POST['editar_cancha'])) {
                     <option value="Piso">Piso</option>
                     </select><br>
 
-                    <label>Estado:</label>
+                    <label>Estado:</label><br>
                     <select name="disponibilidad" required>
                         <option value="libre" <?= $cancha_seleccionada['disponibilidad'] === 'libre' ? 'selected' : '' ?>>Libre</option>
                         <option value="ocupada" <?= $cancha_seleccionada['disponibilidad'] === 'ocupada' ? 'selected' : '' ?>>Ocupada</option>

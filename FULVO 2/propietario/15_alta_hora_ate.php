@@ -38,7 +38,7 @@ $dias = mysqli_query($conexion, "SELECT * FROM Dias");
     <div class="form_alta_predio">
         <h3>Asignar Horario a Predio</h3>
         <form action="15_alta_hora_ate_be.php" method="post">
-            <label>Predio:</label>
+            <label>Predio:</label><br>
             <select name="id_predio" required>
                 <option value="">-- Seleccionar --</option>
                 <?php while ($p = mysqli_fetch_assoc($predios)) {

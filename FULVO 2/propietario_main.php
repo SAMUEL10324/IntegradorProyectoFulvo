@@ -191,7 +191,7 @@ $reservas = mysqli_query($conexion, "
                         <p><strong>Predio:</strong> <?= $r['nombre_predio'] ?></p>
                         <p><strong>Cliente:</strong> <?= $r['nombre_cliente'] . ' ' . $r['apellido_cliente'] ?></p>
                         <p><strong>Fecha:</strong> <?= $r['fecha_reseña'] ?></p>
-                        <p><strong>Calificación:</strong> <?= $r['calificacion'] ?>/5</p>
+                        <p><strong>Calificación:</strong> <?= $r['calificacion'] ?>/10</p>
                         <p><strong>Comentario:</strong> <?= $r['comentario'] ?: 'Sin comentario.' ?></p>
                         <hr>
                     </div>
