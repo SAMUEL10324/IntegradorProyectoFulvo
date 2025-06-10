@@ -198,8 +198,8 @@ body::before {
 }
 
 .cards-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    display: flex;
+    flex-direction: column;
     gap: 25px;
     margin-top: 20px;
 }
