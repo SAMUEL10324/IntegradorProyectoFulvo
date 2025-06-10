@@ -50,6 +50,9 @@ if (mysqli_num_rows($resultado_reservas) > 0) {
     exit;
 }
 
+// Primero eliminás los horarios
+mysqli_query($conexion, "DELETE FROM Horario_Atencion WHERE Predio_id_predio = $id_predio");
+
 // Eliminar canchas del predio
 mysqli_query($conexion, "DELETE FROM cancha WHERE Predio_id_predio = '$id_predio'");
 

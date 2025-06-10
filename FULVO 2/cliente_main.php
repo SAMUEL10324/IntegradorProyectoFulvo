@@ -59,7 +59,7 @@ $cliente = mysqli_fetch_assoc($res_cliente);
                 'Wednesday' => 'Miercoles',
                 'Thursday' => 'Jueves',
                 'Friday' => 'Viernes',
-                'Saturday' => 'Sábado',
+                'Saturday' => 'Sabado',
                 'Sunday' => 'Domingo'
             ];
             $dia_es = $dias_traducidos[$dia_semana] ?? '';
@@ -90,7 +90,11 @@ $cliente = mysqli_fetch_assoc($res_cliente);
                                 <p><strong>📍 Dirección:</strong> <?= "{$fila['calle']} {$fila['numero']}, {$fila['ciudad']}, {$fila['provincia']}" ?></p>
                                 <p><strong>📞 Contacto:</strong> <?= $fila['contacto'] ?></p>
                                 <p><strong>🕒 Horario:</strong> <?= "{$fila['horario_apertura']} - {$fila['horario_cierre']}" ?></p>
-                                <a href="cliente/1_alta_reserva.php?id=<?= $fila['id_predio'] ?>" class="btn-seleccionar">Ver más</a>
+                                <form action="cliente/1_alta_reserva.php" method="POST" style="display:inline;">
+                                    <input type="hidden" name="id_predio" value="<?= $fila['id_predio'] ?>">
+                                    <input type="hidden" name="fecha" value="<?= $fecha ?>">
+                                    <button type="submit" class="btn-seleccionar">Ver más</button>
+                                </form>
                             </div>
                         </div>
                     <?php endwhile; ?>
