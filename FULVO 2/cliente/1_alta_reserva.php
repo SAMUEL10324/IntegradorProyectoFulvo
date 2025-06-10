@@ -110,7 +110,7 @@ function generarHorarios($inicio, $fin, $reservas_existentes) {
                 $horarios_disponibles = generarHorarios($horarios['horario_apertura'], $horarios['horario_cierre'], $horas_reservadas);
             }
             ?>
-            <form action="2_guardar_reserva.php" method="POST" class="cancha-card">
+            <form action="1_alta_reserva_be.php" method="POST" class="cancha-card">
                 <input type="hidden" name="id_predio" value="<?= $id_predio ?>">
                 <input type="hidden" name="id_cancha" value="<?= $cancha['id_cancha'] ?>">
                 <input type="hidden" name="fecha" value="<?= $fecha ?>">

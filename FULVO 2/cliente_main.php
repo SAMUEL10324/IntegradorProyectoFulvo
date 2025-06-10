@@ -34,7 +34,7 @@ $cliente = mysqli_fetch_assoc($res_cliente);
         <div class="acciones">
             <span>¡Hola <?= $cliente['nombre'] . ' ' . $cliente['apellido'] ?>!</span>
             <a href="cliente/mis_datos.php">Mis datos</a>
-            <a href="cliente/mis_reservas.php">Mis reservas</a>
+            <a href="cliente/5_gestionar_reservas.php">Mis reservas</a>
             <a href="cliente/mis_resenas.php">Mis reseñas</a>
         </div>
         <a href="login/cerrar_sesion.php" class="btn_volver">Cerrar sesión</a>

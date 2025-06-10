@@ -324,6 +324,67 @@ body::before {
 }
 
 
+/* GESTION DE RESERVAS */
+.card-reserva {
+    background: rgba(255, 255, 255, 0.8);
+    border: 2px solid #ccc;
+    border-radius: 15px;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 1200px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.card-reserva h3 {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+}
+
+.reserva-contenido {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    flex-wrap: nowrap;
+    text-align: left;
+}
+
+.columna {
+    width: 33.33%;
+    box-sizing: border-box;
+}
+
+.columna-imagen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.imagen-reserva {
+    width: 220px;
+    border-radius: 10px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
+
+.columna-predio p,
+.columna-cancha p {
+    margin-bottom: 6px;
+    font-size: 15px;
+}
+
+.columna-cancha ul {
+    padding-left: 20px;
+    list-style: disc;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+
+
+
 
 
 
