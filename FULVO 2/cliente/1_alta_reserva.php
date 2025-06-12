@@ -83,7 +83,7 @@ function generarHorarios($inicio, $fin, $reservas_existentes) {
 <head>
     <meta charset="UTF-8">
     <title>Reservar Cancha</title>
-    <link rel="stylesheet" href="estilosclientes.css">
+    <link rel="stylesheet" href="estilosClientes.css">
 </head>
 <body>
 <header class="barra_superior">

@@ -67,7 +67,7 @@ while ($fila = mysqli_fetch_assoc($reservas)) {
 <head>
     <meta charset="UTF-8">
     <title>Mis Reservas</title>
-    <link rel="stylesheet" href="estilosclientes.css">
+    <link rel="stylesheet" href="estilosClientes.css">
 </head>
 <body>
 <header class="barra_superior">

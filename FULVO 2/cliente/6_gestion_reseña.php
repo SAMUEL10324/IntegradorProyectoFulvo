@@ -30,7 +30,7 @@ if (!$id_cliente) {
 <head>
     <meta charset="UTF-8">
     <title>Gestión de Reseñas</title>
-    <link rel="stylesheet" href="estilosclientes.css">
+    <link rel="stylesheet" href="estilosClientes.css">
 </head>
 <body>
 
