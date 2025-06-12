@@ -440,4 +440,56 @@ body::before {
     background-color: #6a7f5e;
 }
 
+.form_mis_datos {
+    width: 100%;
+    max-width: 400px;
+    background: rgba(255, 255, 255, 0.6);
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    margin: auto;
+    margin-top: 5px;
+    text-align: center;
+}
+
+.form_mis_datos h3 {
+    font-size: 30px;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 10px;
+    color: black;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+}
+
+.form_mis_datos input {
+    width: 80%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 20px;
+    border: none;
+    font-size: 16px;
+}
+
+.form_mis_datos input[type="file"] {
+    padding: 8px;
+    background-color: #f2f2f2;
+}
+
+.form_mis_datos button {
+    margin: 10px 0;
+    padding: 10px 20px;
+    border: 2px solid rgb(0, 0, 0);
+    background: transparent;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    color: rgb(0, 0, 0);
+    outline: none;
+    transition: all 300ms;
+    background-color: #cdcdcd;
+}
+
+.form_mis_datos button:hover {
+    background-color: #879b78;
+}
 

@@ -27,9 +27,9 @@ $usuario = mysqli_fetch_assoc($res_usuario);
     <a href="../cliente_main.php" class="btn_volver">Volver</a>
 </header>
 <main>
-    <div class="card_reserva">
+    <div class="form_mis_datos">
         <h3>Editar Mis Datos</h3>
-        <form action="13_gestion_mis_datos_be.php" method="POST">
+        <form action="7_modificar_datos_be.php" method="POST">
             <input type="text" name="nombre" value="<?= $usuario['nombre'] ?>" required><br>
             <input type="text" name="apellido" value="<?= $usuario['apellido'] ?>" required><br>
             <input type="email" name="correo" value="<?= $usuario['correo_electronico'] ?>" required><br>
