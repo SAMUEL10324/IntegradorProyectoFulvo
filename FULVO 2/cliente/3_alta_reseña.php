@@ -15,12 +15,12 @@ if (!isset($_SESSION['correo']) || $_SESSION['rol'] !== 'cliente') {
 <head>
     <meta charset="UTF-8">
     <title>Alta Reseña</title>
-    <link rel="stylesheet" href="estilosclientes.css">
+    <link rel="stylesheet" href="estilosClientes.css">
 </head>
 <body>
     <header class="barra_superior">
         <h1>FULVO.COM</h1>
-        <a href="5_gestion_reseña.php" class="btn_volver">Volver</a>
+        <a href="6_gestion_reseña.php" class="btn_volver">Volver</a>
     </header>
 
     <main>

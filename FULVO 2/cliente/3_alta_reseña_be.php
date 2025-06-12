@@ -45,7 +45,7 @@ $insertar = "INSERT INTO Reseña (fecha_reseña, calificacion, comentario, Clien
 $resultado = mysqli_query($conexion, $insertar);
 
 if ($resultado) {
-    echo '<script>alert("¡Reseña guardada correctamente!"); window.location = "5_gestion_reseña.php";</script>';
+    echo '<script>alert("¡Reseña guardada correctamente!"); window.location = "6_gestion_reseña.php";</script>';
 } else {
     echo '<script>alert("Error al guardar la reseña: ' . mysqli_error($conexion) . '"); window.location = "3_alta_reseña.php";</script>';
 }
