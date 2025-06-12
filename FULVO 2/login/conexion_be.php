@@ -1,6 +1,6 @@
 <?php
 
-    $conexion = mysqli_connect("localhost", "root", "tomi919", "fulvo");
+    $conexion = mysqli_connect("localhost", "root", "22638", "fulvo");
 
     /*
     if($conexion){

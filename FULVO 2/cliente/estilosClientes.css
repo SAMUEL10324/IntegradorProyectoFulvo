@@ -323,68 +323,63 @@ body::before {
     cursor: pointer;
 }
 
-
-/* GESTION DE RESERVAS */
-.card-reserva {
-    background: rgba(255, 255, 255, 0.8);
-    border: 2px solid #ccc;
-    border-radius: 15px;
-    padding: 20px;
-    margin: 20px auto;
-    max-width: 1200px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+.form_alta_resena {
+    max-width: 600px;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    margin: 40px auto;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.25);
+    backdrop-filter: blur(2px);
 }
 
-.card-reserva h3 {
-    font-size: 20px;
-    margin-bottom: 20px;
-    color: #333;
+.form_alta_resena h3 {
+    font-size: 26px;
+    margin-bottom: 25px;
+    color: #000;
     text-align: center;
 }
 
-.reserva-contenido {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 20px;
-    flex-wrap: nowrap;
-    text-align: left;
+.form_alta_resena form label {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
 }
 
-.columna {
-    width: 33.33%;
-    box-sizing: border-box;
-}
-
-.columna-imagen {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.imagen-reserva {
-    width: 220px;
+.form_alta_resena form select,
+.form_alta_resena form input[type="date"],
+.form_alta_resena form input[type="number"],
+.form_alta_resena form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
     border-radius: 10px;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
-}
-
-.columna-predio p,
-.columna-cancha p {
-    margin-bottom: 6px;
     font-size: 15px;
+    background-color: #f9f9f9;
 }
 
-.columna-cancha ul {
-    padding-left: 20px;
-    list-style: disc;
-    font-size: 14px;
-    margin-top: 5px;
+.form_alta_resena form textarea {
+    resize: vertical;
+    min-height: 100px;
 }
 
+.form_alta_resena button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background-color: #879b78;
+    color: #fff;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
 
-
-
-
+.form_alta_resena button[type="submit"]:hover {
+    background-color: #6a7f5e;
+}
 
 
