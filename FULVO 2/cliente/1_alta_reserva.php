@@ -88,11 +88,12 @@ function generarHorarios($inicio, $fin, $reservas_existentes) {
 <body>
 <header class="barra_superior">
     <h1>FULVO.COM</h1>
+    <div class="acciones">
+            <span>¡Elija la cancha y el horario a reservar!</span>
+        </div>
     <a href="../cliente_main.php" class="btn_volver">Volver</a>
 </header>
 <main>
-    <h2>Seleccione la cancha a reservar</h2>
-
     <?php if (count($canchas) > 0): ?>
         <?php foreach ($canchas as $cancha): ?>
             <?php
